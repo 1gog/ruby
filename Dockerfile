@@ -7,6 +7,7 @@ RUN yum install epel-release -y && \
 ENV PATH=$PATH:/opt/rbenv/bin
 RUN git clone https://github.com/rbenv/rbenv.git /opt/rbenv  
 RUN mkdir -p /opt/rbenv/plugins
+RUN ls -la /opt/rbenv/bin
 RUN git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build 
 RUN /opt/rbenv/plgins/ruby-build/install.sh
 
