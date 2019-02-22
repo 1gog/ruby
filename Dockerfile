@@ -10,6 +10,7 @@ RUN git clone https://github.com/rbenv/rbenv.git /opt/rbenv
 RUN mkdir -p /opt/rbenv/plugins
 RUN ls -la /opt/rbenv/bin
 ENV RBENV_ROOT=/opt/rbenv
+ENV RUBY_VERSION="${RUBY_VERSION}"
 RUN eval "$(rbenv init -)"
 RUN rbenv root
 RUN git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build 
