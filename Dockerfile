@@ -1,6 +1,7 @@
 FROM centos:7 
 
 ARG RUBY_VERSION=2.5.0
+RUN echo "build ${RUBY_VERSION}"
 RUN yum install epel-release -y && \
     yum install -y openssl-devel readline-devel zlib-devel gcc bzip2 vim git make && yum clean all -y 
 
