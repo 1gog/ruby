@@ -1,0 +1,15 @@
+FROM centos:7 
+
+ARG RUBY_VERSION=26
+ARG RAILS_VERSION=5.2.2
+RUN yum install centos-release-scl && yum-config-manager --enable rhel-server-rhscl-7-rpms && yum install rh-ruby${RUBY_VERSION}
+RUN echo "build ${RUBY_VERSION}"
+RUN yum install epel-release -y && \
+    yum install -y openssl-devel postgresql-libs nodejs postgresql-devel postgresql  && yum clean all -y 
+
+RUN scl enable rh-ruby${RUBY_VERSION} bash
+RUN gem install rails ${RAILS_VERSION}
+
+ADD entrypoint.sh /opt/run/entrypoint.sh
+ENTRYPOINT /opt/run/entrypoint.sh
+
